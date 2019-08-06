@@ -1,0 +1,57 @@
+snippet today "Date"
+`date +%F`
+endsnippet
+
+snippet physics
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{empheq}
+\usepackage{siunitx}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\title{Insert Title Here}
+\author{Max Fan}
+\date{\today}
+\newcommand{\answer}[1]{\begin{center}\boxed{#1}\end{center}}
+\newcommand{\vel}[1]{\SI[per-mode=fraction]{#1}{\meter\per\second}}
+\newcommand{\acc}[1]{\SI[per-mode=fraction]{#1}{\meter\per\second^2}}
+\newcommand{\accgrav}[1]{a_{due\hspace{0.5mm}to\hspace{0.5mm}gravity}}
+\newcommand{\degree}{^{\circ}}
+\newcommand{\problem}[1]{\section*{#1}}
+\setlength{\parindent}{0cm}
+\begin{document}
+\begin{titlepage}
+\maketitle
+
+\center{}
+\textbf{Choate Rosemary Hall}
+
+\bigskip
+
+\textbf{Problems assigned}
+
+Problem numbers here
+
+\vspace*{\fill}
+
+\textbf{Honor Code}
+
+On my honor, I have neither given nor received unauthorized aid.
+
+\bigskip
+
+\text{Made using \underline{\href{https://www.latex-project.org/}{LaTeX}} on 
+\underline{\href{https://www.texstudio.org/}{TeXstudio}}}
+\text{Template at \underline{\href{https://github.com/InnovativeInventor/boilerplate/}{https://github.com/InnovativeInventor/boilerplate/}}}
+\end{titlepage}
+
+
+\problem{Example solution}
+Given $a=b, b=c$:
+
+$a=c$
+\answer{$a=c$}
+
+
+\end{document}
+endsnippet
