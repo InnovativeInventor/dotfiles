@@ -15,7 +15,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'wakatime/vim-wakatime'
+"Plugin 'wakatime/vim-wakatime'
 Plugin 'junegunn/fzf'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-surround'
