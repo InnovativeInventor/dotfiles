@@ -15,8 +15,12 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" Trying to install Coquille
+Plugin 'the-lambda-church/coquille'
+
 "Plugin 'wakatime/vim-wakatime'
 Plugin 'junegunn/fzf'
+"Plugin 'zxqfl/tabnine-vim'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
@@ -24,6 +28,7 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'scrooloose/nerdtree'
 "Plugin 'floobits/floobits-neovim'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'bitc/vim-hdevtools'
 Plugin 'w0rp/ale'
 Plugin 'vimwiki/vimwiki'
 Plugin 'guns/vim-clojure-static'
@@ -44,23 +49,29 @@ Plugin 'guns/vim-sexp'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 Plugin 'luochen1990/rainbow'
 Plugin 'tpope/vim-salve'
+Plugin 'leanprover/lean.vim'
 
 " Track the engine.
-Plugin 'SirVer/ultisnips'
+Plugin 'sirver/ultisnips'
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-let g:UltiSnipsSnippetDirectories=["UltiSnips"]
-set runtimepath+=~/.vim/ultisnips_rep
+let g:UltiSnipsSnippetsDir="/Users/max/.vim/snips"
+let g:UltiSnipsSnippetDirectories=["/Users/max/.vim/snips", "/Users/max/.vim/UltiSnips", "snips", "UltiSnips"]
+"let g:UltiSnipsSnippetDirectories=["UltiSnips"]
+"let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+"let g:UltiSnipsSnippetDirectories=[g:UltiSnipsSnippetsDir]
+set runtimepath+=/Users/max/.vim/ultisnips_rep
+set runtimepath+=$GOROOT/misc/vim
 
 
 Plugin 'lervag/vimtex'
 Plugin 'KeitaNakamura/tex-conceal.vim'
 "let g:tex_flavor='latex'
-""let g:vimtex_view_method='mupdf-gl'
+let g:vimtex_view_method='skim'
 "let g:vimtex_quickfix_mode=0
-"set conceallevel=1
-"let g:tex_conceal='abdmg'
+set conceallevel=2
+let g:tex_conceal='abdmg'
 
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
@@ -107,7 +118,6 @@ if has("gui_running")
 endif
 
 map - :NERDTreeToggle<CR>
-map <C-m> : ! markdown-pdf *.md
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -121,6 +131,8 @@ nnoremap <C-H> <C-W><C-H>
 "" Enable folding with the spacebar
 "nnoremap <leader>h za
 nnoremap <expr> <C-F> &foldlevel ? 'zM' :'zR'
+nnoremap <c-j> <c-e>
+nnoremap <c-k> <c-y>
 
 " Settings for LaTeX
 
@@ -130,9 +142,11 @@ nnoremap <expr> <C-F> &foldlevel ? 'zM' :'zR'
 "map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+"autocmd BufNewFile,BufRead *.go set ft=golang
+map <F12> : ! python3 %:p <CR>
+map <F11> : ! cd '%:p:h' && pytest --cov-report term --cov-report term --cov-report term-missing --cov=./ --cov-config=.coveragerc <CR>
 
 let mapleader=" "
-let python_highlight_all=1
 
 
 " Formatting settings
@@ -141,6 +155,24 @@ syntax on
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set nospell
 set spelllang=en
 set spellfile=~/git/dict4schools/spell/uncensored/en.utf-8.add
+hi SpellBad ctermfg=000 guifg=#222222
 exec 'silent mkspell! ' &spellfile
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                       \ 'syntax': 'markdown', 'ext': '.md'}]
+
+" ==================== Vim-go ====================
+let g:go_fmt_fail_silently = 0
+let g:go_fmt_command = "goimports"
+let g:go_autodetect_gopath = 1
+let g:go_term_enabled = 1
+let g:go_snippet_engine = "neosnippet"
+let g:go_highlight_space_tab_error = 0
+let g:go_highlight_array_whitespace_error = 0
+let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_extra_types = 0
+let g:go_highlight_operators = 0
+let g:go_highlight_build_constraints = 1
+let g:go_fmt_autosave = 1

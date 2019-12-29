@@ -1,14 +1,19 @@
 set -lx laststatus 2
 function fish_user_key_bindings
-  fzf_key_bindings
+    fish_default_key_bindings
+    fzf_key_bindings
 end
 
 set PATH /usr/local/opt/mozjpeg/bin $PATH
 set PATH (go env GOPATH)/bin $PATH
+set PATH /Users/max/.local/bin $PATH
+set PATH $HOME/.cargo/bin $PATH
 set PATH $HOME/exec/bin $PATH
 set -gx GOPATH /Users/max/go $GOPATH
 set -x GPG_TTY (tty)
-set -x SSH_AUTH_SOCK $HOME/.sekey/ssh-agent.ssh
+set -x SSH_AUTH_SOCK $HOME/.gnupg/S.gpg-agent.ssh
+set -x GIT_SSH_COMMAND "ssh -i ~/.ssh/github_rsa -F /dev/null"
+set -x PIPENV_VERBOSITY -1
 # set -gx PATH /anaconda3/bin $PATH
 eval (pipenv --completion)
 thefuck --alias fuck | source
@@ -20,9 +25,9 @@ funcsave vimupdate
 
 # function fish_prompt
 #     set prev_PYENV_VERSION $PYENV_VERSION
-#     set -x PYENV_VERSION anaconda3-2018.12   
-#     /Users/max/.pyenv/shims/powerline-shell --shell bare $status
-#     set -x PYENV_VERSION prev_PYENV_VERSION   
+#     set -x PYENV_VERSION anaconda3-2018.12
+#     /Users/max/.pyenv/versions/2.7.15/bin/powerline-shell --shell bare $status
+#     set -x PYENV_VERSION prev_PYENV_VERSION
 # end
 
 function vim
@@ -30,10 +35,10 @@ function vim
 end
 funcsave vim
 
-function ls 
+function ls
     exa --git $argv
 end
-funcsave ls 
+funcsave ls
 
 function nano
     mvim -v $argv
