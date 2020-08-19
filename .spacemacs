@@ -514,13 +514,6 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  ;; (load-file "~/git/discord-emacs.el/discord-emacs.el")
-  ;; (use-package discord-emacs
-  ;;   :ensure nil
-  ;;   :custom
-  ;;   (discord-emacs-ipc-dir (shell-command-to-string "find /private/var/folders -name \"*discord-ipc*\" 2> /dev/null | sed 's/\/discord-ipc-0*//'"))
-  ;;   :config
-  ;;   (discord-emacs-run "384815451978334208"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
