@@ -30,23 +30,33 @@ This function should only modify configuration layer settings."
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
 
+   ;; (setq-default dotspacemacs-configuration-layers
+   ;;               '())
+
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(rust
+   '(csv
+     shell-scripts
+     rust
      go
      yaml
+
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
+     ipython-notebook
      better-defaults
+     scala
      emacs-lisp
      helm
      helpful
-     haskell
+     (haskell :variables haskell-process-type 'stack-ghci)
      lsp
+     nim
+     clojure
      spell-checking
      multiple-cursors
      ;; python
@@ -64,6 +74,13 @@ This function should only modify configuration layer settings."
      syntax-checking
      version-control
      treemacs
+     scala
+     shell-scripts
+     yaml
+     sql
+     ocaml
+     java
+     latex
      )
 
    ;; List of additional packages that will be installed without being
@@ -73,9 +90,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(
-                                      elcord
-                                      )
+   dotspacemacs-additional-packages '()
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -499,8 +514,6 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  (require 'elcord)
-  (elcord-mode)
   ;; (load-file "~/git/discord-emacs.el/discord-emacs.el")
   ;; (use-package discord-emacs
   ;;   :ensure nil
@@ -522,9 +535,10 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (toml-mode racer flycheck-rust dap-mode posframe counsel-gtags counsel swiper cargo rust-mode elcord helm-gtags godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc ggtags flycheck-golangci-lint bui ivy go-mode yaml-mode yasnippet-snippets lsp-ui lsp-treemacs lsp-python-ms helm-lsp lsp-mode dash-functional helm-company helm-c-yasnippet git-gutter-fringe+ fringe-helper git-gutter+ fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip company-anaconda company browse-at-remote auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete yapfify treemacs-magit smeargle pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-cliplink org-brain mmm-mode markdown-toc markdown-mode magit-svn magit-section magit-gitflow magit-popup live-py-mode importmagic epc ctable concurrent deferred htmlize helm-pydoc helm-org-rifle helm-org helm-gitignore helm-git-grep gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md evil-org evil-magit magit git-commit with-editor transient cython-mode blacken anaconda-mode pythonic ws-butler writeroom-mode visual-fill-column winum volatile-highlights vi-tilde-fringe uuidgen treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil treemacs ht pfuture toc-org symon symbol-overlay string-inflection spaceline-all-the-icons all-the-icons memoize spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode password-generator paradox spinner overseer org-superstar open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-xref helm-themes helm-swoop helm-purpose window-purpose imenu-list helm-projectile helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio flycheck-package package-lint flycheck let-alist flycheck-elsa flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens smartparens evil-args evil-anzu anzu eval-sexp-fu emr iedit clang-format projectile paredit list-utils pkg-info epl elisp-slime-nav editorconfig dumb-jump dash s devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile packed aggressive-indent ace-window ace-link ace-jump-helm-line helm avy helm-core popup which-key use-package pcre2el org-plus-contrib hydra lv hybrid-mode font-lock+ evil dotenv-mode diminish bind-map bind-key async))))
+    (ein exec-path-from-shell polymode anaphora websocket csv-mode utop tuareg caml sql-indent scala-mode sbt-mode ocp-indent nim-mode flycheck-nimsuggest commenter mvn meghanada maven-test-mode lsp-java groovy-mode groovy-imports pcache flycheck-ocaml merlin flycheck-nim dune company-reftex company-auctex clojure-snippets cider-eval-sexp-fu cider sesman queue parseedn clojure-mode parseclj a auctex insert-shebang flycheck-bashate fish-mode ivy company-shell toml-mode racer emacs-async flycheck-rust dap-mode posframe counsel-gtags counsel swiper cargo rust-mode helm-gtags godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc ggtags flycheck-golangci-lint bui go-mode yaml-mode yasnippet-snippets lsp-ui lsp-treemacs lsp-python-ms helm-lsp lsp-mode dash-functional helm-company helm-c-yasnippet git-gutter-fringe+ fringe-helper git-gutter+ fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip company-anaconda company browse-at-remote auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete yapfify treemacs-magit smeargle pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-cliplink org-brain mmm-mode markdown-toc markdown-mode magit-svn magit-section magit-gitflow magit-popup live-py-mode importmagic epc ctable concurrent deferred htmlize helm-pydoc helm-org-rifle helm-org helm-gitignore helm-git-grep gnuplot gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md evil-org evil-magit magit git-commit with-editor transient cython-mode blacken anaconda-mode pythonic ws-butler writeroom-mode visual-fill-column winum volatile-highlights vi-tilde-fringe uuidgen treemacs-projectile treemacs-persp treemacs-icons-dired treemacs-evil treemacs ht pfuture toc-org symon symbol-overlay string-inflection spaceline-all-the-icons all-the-icons memoize spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode password-generator paradox spinner overseer org-superstar open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-xref helm-themes helm-swoop helm-purpose window-purpose imenu-list helm-projectile helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag google-translate golden-ratio flycheck-package package-lint flycheck let-alist flycheck-elsa flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired f evil-tutor evil-textobj-line evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens smartparens evil-args evil-anzu anzu eval-sexp-fu emr iedit clang-format projectile paredit list-utils pkg-info epl elisp-slime-nav editorconfig dumb-jump dash s devdocs define-word column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile packed aggressive-indent ace-window ace-link ace-jump-helm-line helm avy helm-core popup which-key use-package pcre2el org-plus-contrib hydra lv hybrid-mode font-lock+ evil dotenv-mode diminish bind-map bind-key async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
