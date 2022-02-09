@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -149,10 +149,10 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-assign [class="Firefox"] $ws2
-assign [class="Slack"] $ws3
-assign [class="discord"] $ws3
-assign [class="zoom"] $ws2
+# assign [class="Firefox"] $ws2
+# assign [class="Slack"] $ws3
+# assign [class="discord"] $ws3
+# assign [class="zoom"] $ws2
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -194,10 +194,35 @@ bar {
         status_command i3status
 }
 
+exec --no-startup-id dunst -config /home/max/.config/dunst/dunstrc
+exec --no-startup-id slack
+
+exec sudo mount /dev/nvme1n1p1 git
+exec setxkbmap -option caps:swapescape
+
+# Review the lines below and append to ~/.config/i3/config
+
+## Volume control
+
+# Path to volume control, without trailing slash
+set $volumepath ~/i3-volume
+
+# Command for the status line
+#   ie: i3blocks, i3status
+set $statuscmd i3status
+
+# Signal used to update the status line
+#   i3blocks uses SIGRTMIN+10 by default
+#   i3status uses SIGUSR1 by default
+set $statussig SIGUSR1
+
+# Amount to increase/decrease volume as a percentage
+set $volumestep 5
+
+exec_always synclient TouchpadOff=1
+
 # Logout stuff
 # bindsym $mod+Escape exec i3lock -c 000000
 bindsym $mod+Escape exec '/home/max/git/sysadmin/lock.sh'
 exec xautolock -time 60 -locker '/home/max/git/sysadmin/lock.sh' &
-
-exec --no-startup-id dunst -config /home/max/.config/dunst/dunstrc
-exec --no-startup-id slack
+exec setxkbmap -option caps:swapescape
