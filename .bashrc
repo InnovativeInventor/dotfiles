@@ -7,5 +7,9 @@
 
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
+
+# Editor stuff
 alias vim='nvim'
 export EDITOR="nvim"
+
+eval "$(starship init bash)"
