@@ -1,9 +1,0 @@
-10.2.1.141    arthur.choate.edu
-10.2.1.141    choatesis.choate.edu
-10.2.1.50        library.choate.edu
-10.2.1.32        finalsite.choate.edu
-10.2.1.11        portals.choate.edu
-10.2.1.201    adams.choate.edu
-10.2.1.204      password.choate.edu
-10.2.1.51       proxy.choate.edu
-10.2.1.177    loggerpro.choate.edu

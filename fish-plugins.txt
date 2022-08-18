@@ -1,5 +1,0 @@
-[4mPlugins[30m(B[m
-bass		dev-fish	fish-spec	omf
-
-[4mThemes[30m(B[m
-bobthefish	default

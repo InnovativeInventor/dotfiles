@@ -1,8 +1,5 @@
 [user]
-	name = InnovativeInventor
-	email = theinnovativeinventor@gmail.com
-	signingkey = AF0BAEA7D15237A8
+	name = Max Fan
+	email = git@max.fan
 [url "git@github.com:"]
 	insteadOf = https://github.com/
-[commit]
-	gpgsign = true
