@@ -16,3 +16,5 @@ export PATH=$HOME/.cargo/bin:$PATH
 eval "$(starship init bash)"
 export PATH=$HOME/.cabal/bin:$PATH
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
