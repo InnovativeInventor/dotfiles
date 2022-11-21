@@ -12,6 +12,7 @@ PS1='[\u@\h \W]\$ '
 alias vim='nvim'
 export EDITOR="nvim"
 
+export PATH=$HOME/.cargo/bin:$PATH
 eval "$(starship init bash)"
 export PATH=$HOME/.cabal/bin:$PATH
 
