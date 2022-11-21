@@ -13,3 +13,5 @@ alias vim='nvim'
 export EDITOR="nvim"
 
 eval "$(starship init bash)"
+export PATH=$HOME/.cabal/bin:$PATH
+
