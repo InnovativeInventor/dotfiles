@@ -14,7 +14,9 @@
 
      wget
      curl
+     rsync
 
+     diff-so-fancy
      git
      alacritty
      tmux
@@ -25,8 +27,12 @@
      stow
      ripgrep
 
+     rustup
+     opam
+     python3
+
      powertop
-     # tlp
+     tlp
 
      fprintd
      intel-media-driver
@@ -35,6 +41,6 @@
      perf-tools
      valgrind
      qcachegrind
-     rustup
+
   ];
 }

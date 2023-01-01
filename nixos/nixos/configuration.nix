@@ -90,6 +90,8 @@
       kate
       zoom-us
       element-desktop
+      slack
+      chromium
     #  thunderbird
     ];
   };
@@ -105,14 +107,19 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.fprintd.enable = true;
   # services.openssh.enable = true;
+  services.fprintd.enable = true;
+  services.tlp.enable = true;
+  services.tailscale.enable = true;
+
+  virtualisation.docker.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.checkReversePath = "loose";
+  networking.firewall.enable = true;
 
   nix.settings.experimental-features = "nix-command flakes";
 
