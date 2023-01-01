@@ -44,5 +44,7 @@
      hyperfine
      
      dmenu
+     # brightnessctl
+     acpilight
   ];
 }

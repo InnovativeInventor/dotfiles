@@ -57,7 +57,7 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing.enable = false;  # who needs printing, anyways
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -79,11 +79,15 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
 
+  users.groups.video = {
+    members = [ "max" ];
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.max = {
     isNormalUser = true;
     description = "max";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [
       firefox-bin
       discord
@@ -111,6 +115,13 @@
   services.fprintd.enable = true;
   services.tlp.enable = true;
   services.tailscale.enable = true;
+  services.udev = {
+    enable = true;
+    extraRules = with pkgs; "
+      SUBSYSTEM==\"backlight\",
+      ACTION==\"add\", RUN+=\"${coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness\",
+      RUN+=\"${coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness\"";
+  };
 
   virtualisation.docker.enable = true;
 
