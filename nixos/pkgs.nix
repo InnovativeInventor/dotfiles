@@ -30,6 +30,8 @@
      rustup
      opam
      python3
+     gcc_latest
+     mold
 
      powertop
      tlp
@@ -44,6 +46,7 @@
      hyperfine
      
      dmenu
+     xmobar
      # brightnessctl
      acpilight
   ];

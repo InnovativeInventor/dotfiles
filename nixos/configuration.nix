@@ -115,6 +115,7 @@
   services.fprintd.enable = true;
   services.tlp.enable = true;
   services.tailscale.enable = true;
+  services.blueman.enable = true;
   services.udev = {
     enable = true;
     extraRules = with pkgs; "

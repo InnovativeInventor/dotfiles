@@ -15,6 +15,7 @@ export EDITOR="nvim"
 export PATH=$HOME/.cargo/bin:$PATH
 eval "$(starship init bash)"
 export PATH=$HOME/.cabal/bin:$PATH
+# export CARGO_NET_GIT_FETCH_WITH_CLI=true
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

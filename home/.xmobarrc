@@ -1,0 +1,60 @@
+Config { overrideRedirect = False
+       , font     = "xft:iosevka-16"
+       -- , bgColor  = "#5f5f5f"
+       , bgColor  = "#000000"
+       , fgColor  = "#f8f8f2"
+       , position = BottomW L 100
+       , commands = [ Run Weather "KBOS"
+                        [ "--template", "<weather> <tempF>°F"
+                        , "-L", "32"
+                        , "-H", "75"
+                        , "--low"   , "lightblue"
+                        , "--normal", "#f8f8f2"
+                        , "--high"  , "red"
+                        ] 36000
+		    , Run Weather "KCMI"
+                        [ "--template", "<weather> <tempF>°F"
+                        , "-L", "32"
+                        , "-H", "75"
+                        , "--low"   , "lightblue"
+                        , "--normal", "#f8f8f2"
+                        , "--high"  , "red"
+                        ] 36000
+                    , Run Cpu
+                        [ "-L", "3"
+                        , "-H", "50"
+                        , "--high"  , "red"
+                        , "--normal", "green"
+			, "--template", "C: <total>% <vbar>"
+                        ] 100
+                    , Run Battery
+		        [ "--template" , "Bat: <acstatus>"
+                        , "--Low"      , "10"        -- units: %
+                        , "--High"     , "80"        -- units: %
+                        , "--low"      , "red"
+                        , "--normal"   , "orange"
+                        , "--high"     , "green"
+
+                        , "--" -- battery specific options
+		        -- discharging status
+		        , "-o"	, "<left>% (<timeleft>)"
+		        -- AC "on" status
+		        , "-O"	, "<fc=#dAA520>Charging</fc>"
+		        -- charged status
+		        , "-i"	, "<fc=#006000>Charged</fc>"
+                        ] 100
+                    , Run Alsa "default" "Master"
+                        [ "--template", "<volumestatus>"
+                        , "--suffix"  , "True"
+                        , "--"
+                        , "--on", ""
+                        ]
+                    , Run Memory ["--template", "M: <usedratio>%"] 100
+                    , Run Swap ["--template", "S: <usedratio>%"] 100
+                    , Run Date "%a %Y-%m-%d <fc=#8be9fd>%H:%M:%S</fc>" "date" 10
+                    , Run XMonadLog
+                    ]
+       , sepChar  = "%"
+       , alignSep = "}{"
+       , template = "%XMonadLog% }{ CMI: %KCMI% | BOS: %KBOS% | Vol: %alsa:default:Master% | %cpu% | %memory% | %swap% | %battery% | %date% "
+       }

@@ -23,10 +23,11 @@
       xmonad = {
         enable = true;
         enableContribAndExtras = true;
-        # extraPackages = haskellPackages: [ 
+        extraPackages = haskellPackages: [ 
           # pkgs.polybar
-          # haskellPackages.xmobar
-        # ];
+          haskellPackages.xmobar
+          # haskellPackages.dzen
+        ];
       };
       i3 = {
         enable = false;
