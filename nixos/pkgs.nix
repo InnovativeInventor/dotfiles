@@ -8,6 +8,18 @@
   # $ nix search wget
 
   environment.systemPackages = with pkgs; [
+     dmenu
+     xmobar
+     # brightnessctl
+     acpilight
+
+     fprintd
+     intel-media-driver
+     intel-gpu-tools
+
+     powertop
+     tlp
+
      neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      vim
      emacs
@@ -16,8 +28,13 @@
      curl
      rsync
 
-     diff-so-fancy
      git
+     git-cinnabar
+     mercurialFull
+     darcs
+     pijul
+
+     diff-so-fancy
      alacritty
      tmux
      starship
@@ -31,23 +48,21 @@
      opam
      python3
      gcc_latest
+     llvm
+
+     gnumake
+     cmake
+     ninja
      mold
-
-     powertop
-     tlp
-
-     fprintd
-     intel-media-driver
-     intel-gpu-tools
+     ccache
+     sccache
+     pkg-config
 
      perf-tools
      valgrind
      qcachegrind
      hyperfine
-     
-     dmenu
-     xmobar
-     # brightnessctl
-     acpilight
+
+     borgmatic
   ];
 }
