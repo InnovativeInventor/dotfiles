@@ -2,4 +2,4 @@
 rustflags = ["-C", "link-arg=-fuse-ld=mold"]
 
 [build]
-rustc-wrapper = "ccache"
+rustc-wrapper = "sccache"
