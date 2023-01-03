@@ -76,9 +76,6 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
-
   users.groups.video = {
     members = [ "max" ];
   };
@@ -112,6 +109,32 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+  services.borgmatic = {
+    enable = true;
+    frequency = "hourly";
+    settings = {
+      location = {
+        source_directories = [
+          "/home"
+          "/etc"
+        ];
+        repositories = [
+          "ssh://de1007@de1007.rsync.net/./backups/nix-laptop.borg"
+        ];
+      };
+      retention = {
+        keep_within = "1 w";     # one week
+        keep_hourly = 750;     # ~one month
+        keep_daily = 365;      # ~one year
+        keep_weekly = 365000;  # a very long time 
+        keep_monthly = 365000; # a very very long time
+      };
+      storage = {
+        encryption_passphrase = import /home/max/.secrets/borg.nix;
+        ssh_command = "ssh -i /home/max/.ssh/id_rsa";
+      };
+    };
+  };
   services.fprintd.enable = true;
   services.tlp.enable = true;
   services.tailscale.enable = true;

@@ -54,6 +54,8 @@
     xkbOptions = "caps:swapescape";
   };
   
+  # Enable touchpad support (enabled default in most desktopManager).
+  services.xserver.libinput.enable = true;
   services.xserver.libinput.touchpad.naturalScrolling = true;
   services.xserver.libinput.touchpad.disableWhileTyping = true;
   services.xserver.libinput.touchpad.clickMethod = "clickfinger";
