@@ -64,5 +64,7 @@
      hyperfine
 
      borgmatic
+
+     fuse3
   ];
 }

@@ -20,4 +20,5 @@ myConfig = def { terminal = "alacritty" } `additionalKeysP` myKeys `removeKeysP`
 myKeys = [ ("M-a", spawn "xbacklight -dec 5 &>> /home/max/xmonad.log")
           , ("M-s", spawn "xbacklight -inc 5 &>> /home/max/xmonad.log")
           , ("M-d", spawn "dmenu_run &>> /home/max/xmonad.log")
+          , ("M-<Esc>", spawn "xfce4-screensaver-command -l &>> /home/max/xmonad.log")
   ]

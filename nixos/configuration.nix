@@ -111,7 +111,7 @@
   # services.openssh.enable = true;
   services.borgmatic = {
     enable = true;
-    frequency = "hourly";
+    frequency = "daily";
     settings = {
       location = {
         source_directories = [
@@ -133,6 +133,7 @@
         encryption_passphrase = import /home/max/.secrets/borg.nix;
         ssh_command = "ssh -i /home/max/.ssh/id_rsa";
       };
+      hooks.healthchecks.ping_url = import /home/max/.secrets/healthchecks.nix;
     };
   };
   services.fprintd.enable = true;
