@@ -10,6 +10,7 @@
   environment.systemPackages = with pkgs; [
      dmenu
      xmobar
+     shutter
      # brightnessctl
      acpilight
 
@@ -57,6 +58,10 @@
      ccache
      sccache
      pkg-config
+     libiconv
+
+     util-linux
+     libuuid
 
      perf-tools
      valgrind
@@ -66,5 +71,6 @@
      borgmatic
 
      fuse3
+     coq
   ];
 }

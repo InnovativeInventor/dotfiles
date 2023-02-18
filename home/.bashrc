@@ -19,3 +19,8 @@ export PATH=$HOME/.cabal/bin:$PATH
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000
+shopt -s histappend
+

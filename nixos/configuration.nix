@@ -54,6 +54,7 @@
     EDITOR = "nvim";
     BROWSER = "firefox";
     TERMINAL = "alacritty";
+    TZ = "/etc/localtime";
   };
 
   # Enable CUPS to print documents.
