@@ -8,6 +8,7 @@
   # $ nix search wget
 
   environment.systemPackages = with pkgs; [
+     zulip-term
      dmenu
      xmobar
      shutter
@@ -72,5 +73,7 @@
 
      fuse3
      coq
+
+     gtk3
   ];
 }
