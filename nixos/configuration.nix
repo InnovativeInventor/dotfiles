@@ -89,6 +89,7 @@
     packages = with pkgs; [
       firefox-bin
       discord
+      zotero
       kate
       zoom-us
       element-desktop

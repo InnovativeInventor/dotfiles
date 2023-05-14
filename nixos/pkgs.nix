@@ -75,5 +75,7 @@
      coq
 
      gtk3
+
+     xorg.xcbutil
   ];
 }
