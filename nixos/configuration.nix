@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./display.nix
       ./pkgs.nix
+      ./pkgs-linux.nix
     ];
 
   # Bootloader.

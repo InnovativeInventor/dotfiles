@@ -8,19 +8,11 @@
   # $ nix search wget
 
   environment.systemPackages = with pkgs; [
-     zulip-term
-     dmenu
-     xmobar
-     shutter
+     # zulip-term
+     # dmenu
+     # xmobar
+     # shutter
      # brightnessctl
-     acpilight
-
-     fprintd
-     intel-media-driver
-     intel-gpu-tools
-
-     powertop
-     tlp
 
      neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      vim
@@ -58,24 +50,12 @@
      mold
      ccache
      sccache
-     pkg-config
-     libiconv
 
-     util-linux
-     libuuid
-
-     perf-tools
-     valgrind
-     qcachegrind
      hyperfine
 
      borgmatic
 
-     fuse3
      coq
-
-     gtk3
-
-     xorg.xcbutil
+     hugo
   ];
 }
