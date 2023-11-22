@@ -31,7 +31,17 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  # networking.networkmanager.enable = true;
+
+  networking.wireless.environmentFile = "/home/max/.secrets/wireless.env";
+  networking.wireless.enable = true;
+  networking.wireless.networks = {
+    "Network 5G".auth = "@Network_5G_AUTH@";
+    IllinoisNet.auth = "@IllinoisNet_AUTH@";
+    IllinoisNet.priority = 10;
+    Eduroam.auth = "@Eduroam_AUTH@";
+    "Home Sweet Home".auth = "@Home_Sweet_Home_AUTH@";
+  };
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
@@ -79,6 +89,10 @@
   };
 
   users.groups.video = {
+    members = [ "max" ];
+  };
+
+  users.groups.wheel = {
     members = [ "max" ];
   };
 
@@ -164,6 +178,14 @@
   networking.firewall.enable = true;
 
   nix.settings.experimental-features = "nix-command flakes";
+
+  # systemd.services.xmobar = {
+  #   enable = true;
+  #   description = "xmobar start on login";
+  #   serviceConfig.PassEnviroment = "DISPLAY";
+  #   script = "${pkgs.xmobar}/bin/xmobar";
+  #   wantedBy = [ "display-manager.sserver" , "multi-user.target" ];
+  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

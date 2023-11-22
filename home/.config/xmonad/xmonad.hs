@@ -15,10 +15,10 @@ import XMonad.Prompt.FuzzyMatch
 -- import XMonad.Hooks.StatusBar.PP
 
 main :: IO ()
-main = do
+main = xmonad $ xmobarProp $ myConfig
   -- sb <- statusBarPipe "i3status" (pure def) -- (pure xmobarPP)
   -- xmonad $ withSB sb $ myConfig
-    xmonad $ xmobarProp $ myConfig
+  -- xmonad $ xmobarProp $ myConfig
 
 myWorkspaces = ["1:class", "2:res", "3:code", "4:msg", "5:scratch", "6", "7", "8", "9"]
 

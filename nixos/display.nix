@@ -17,6 +17,7 @@
    
     displayManager = {
         defaultSession = "xfce+xmonad";
+        # setupCommands = "${pkgs.xmobar}/bin/xmobar";
     };
 
     windowManager = {
