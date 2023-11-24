@@ -37,5 +37,6 @@
      libiconv
      pkg-config
      libuuid
+     x11docker
   ];
 }
