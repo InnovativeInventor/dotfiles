@@ -22,6 +22,7 @@
      curl
      rsync
 
+     gh
      git
      git-cinnabar
      mercurialFull

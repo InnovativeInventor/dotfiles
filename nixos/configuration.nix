@@ -100,7 +100,7 @@
   users.users.max = {
     isNormalUser = true;
     description = "max";
-    extraGroups = [ "networkmanager" "wheel" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "docker"];
     packages = with pkgs; [
       firefox-bin
       discord
