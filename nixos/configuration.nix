@@ -96,6 +96,10 @@
     members = [ "max" ];
   };
 
+  users.groups.docker = {
+    members = [ "max" ];
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.max = {
     isNormalUser = true;
@@ -167,6 +171,7 @@
       ACTION==\"add\", RUN+=\"${coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness\",
       RUN+=\"${coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness\"";
   };
+  # services.gnome3.at-spi2-core.enable = true;
 
   virtualisation.docker.enable = true;
 

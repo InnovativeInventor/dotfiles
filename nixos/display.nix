@@ -3,6 +3,8 @@
 {
   environment.pathsToLink = [ "/libexec" ]; # from i3 nixos docs
 
+  # Enable the X11 windowing system.
+  # services.xserver.enable = true;
   services.xserver = {
     enable = true;
 
@@ -17,7 +19,7 @@
    
     displayManager = {
         defaultSession = "xfce+xmonad";
-        # setupCommands = "${pkgs.xmobar}/bin/xmobar";
+        sessionCommands = "${pkgs.xmobar}/bin/xmobar";
     };
 
     windowManager = {
@@ -26,7 +28,7 @@
         enableContribAndExtras = true;
         extraPackages = haskellPackages: [ 
           # pkgs.polybar
-          haskellPackages.xmobar
+          pkgs.xmobar
           # haskellPackages.dzen
         ];
       };
@@ -40,9 +42,6 @@
       };
     };
   };
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   # services.xserver.displayManager.sddm.enable = true;
