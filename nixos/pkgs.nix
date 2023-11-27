@@ -44,6 +44,7 @@
      python3
      gcc_latest
      llvm
+     llvmPackages_16.clang-unwrapped
 
      gnumake
      cmake
@@ -58,5 +59,16 @@
 
      coq
      hugo
+
+     haskell-language-server
+     haskellPackages.hoogle
+
+     nixfmt
+     black
+     isort
+     dockfmt
+     clj-kondo
+
+     nerdfonts
   ];
 }

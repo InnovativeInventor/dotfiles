@@ -38,5 +38,6 @@
      pkg-config
      libuuid
      x11docker
+     auto-cpufreq
   ];
 }
