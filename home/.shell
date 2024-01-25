@@ -5,3 +5,5 @@ shopt -s histappend
 alias e='sudo nvim /etc/nixos'
 alias r='sudo nixos-rebuild switch'
 alias a='sudo docker run --rm -v $(pwd):/root -it arch'
+
+eval $(opam env)

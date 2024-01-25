@@ -21,3 +21,6 @@ export PATH=$HOME/.cabal/bin:$HOME/.config/emacs/bin:$PATH
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 source ~/.shell
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash --disable-up-arrow)"

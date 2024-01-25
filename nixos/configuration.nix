@@ -24,6 +24,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   networking.hostName = "nixos"; # Define your hostname.
+  networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -40,6 +41,8 @@
     IllinoisNet.auth = "@IllinoisNet_AUTH@";
     IllinoisNet.priority = 10;
     Eduroam.auth = "@Eduroam_AUTH@";
+    "Big Goose".auth = "@Big_Goose_AUTH@";
+    # Olaliving.auth = "@Olaliving_AUTH@";
     "Home Sweet Home".auth = "@Home_Sweet_Home_AUTH@";
   };
 
@@ -161,8 +164,33 @@
     };
   };
   services.fprintd.enable = true;
-  # services.tlp.enable = true;
-  services.auto-cpufreq.enable = true;
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_BAT="powersave";
+      CPU_SCALING_GOVERNOR_ON_AC="performance";
+      CPU_ENERGY_PERF_POLICY_ON_AC="performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT="balance_power";
+
+      # The following prevents the battery from charging fully to
+      # preserve lifetime. Run `tlp fullcharge` to temporarily force
+      # full charge.
+      # https://linrunner.de/tlp/faq/battery.html#how-to-choose-good-battery-charge-thresholds
+      START_CHARGE_THRESH_BAT0=50;
+      STOP_CHARGE_THRESH_BAT0=80;
+
+      # 100 being the maximum, limit the speed of my CPU to reduce
+      # heat and increase battery usage:
+      CPU_MAX_PERF_ON_AC=100;
+      CPU_MAX_PERF_ON_BAT=80;
+      CPU_BOOST_ON_AC=1;
+      CPU_BOOST_ON_BAT=0;
+
+      PLATFORM_PROFILE_ON_AC="performance";
+      PLATFORM_PROFILE_ON_BAT="low-power";
+    };
+  };
+  # services.auto-cpufreq.enable = true;
   # services.auto-cpufreq = {
   #   enable = true;
   #   settings = {
@@ -198,6 +226,10 @@
   networking.firewall.enable = true;
 
   nix.settings.experimental-features = "nix-command flakes";
+  # nix.settings.substituers = [
+  #   https://cache.nixos.org/
+  #   https://cache.iog.io
+  # ];
 
   # systemd.services.xmobar = {
   #   enable = true;

@@ -70,5 +70,6 @@
      clj-kondo
 
      nerdfonts
+     dig
   ];
 }
