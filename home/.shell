@@ -9,6 +9,8 @@ alias dev='docker exec -it --user ubuntu --workdir /home/ubuntu dev bash'
 alias bdev='sudo docker export dev > /home/max/dev/backups/dev-backup-$(date -Ins).tar'
 
 eval $(opam env)
+eval "$(atuin init bash --disable-up-arrow)"
+eval "$(starship init bash)"
 
 # Editor stuff
 alias vim='nvim'
