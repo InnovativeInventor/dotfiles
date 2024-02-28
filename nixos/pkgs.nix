@@ -22,6 +22,8 @@
      curl
      rsync
 
+     pv
+
      gh
      git
      git-cinnabar
@@ -42,6 +44,7 @@
      rustup
      opam
      python3
+     rstudio
      gcc_latest
      llvm
      llvmPackages_16.clang-unwrapped
@@ -71,5 +74,6 @@
 
      nerdfonts
      dig
+     anki
   ];
 }

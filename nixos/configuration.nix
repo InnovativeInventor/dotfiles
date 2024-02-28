@@ -14,7 +14,7 @@
     ];
 
   # Bootloader.
-  boot.kernelPackages = pkgs.linuxPackages_6_1;
+  boot.kernelPackages = pkgs.linuxPackages_6_6;
   boot.kernelParams = [
     "mitigations=off"
     "nvme.noacpi=1" 
@@ -44,6 +44,8 @@
     "Big Goose".auth = "@Big_Goose_AUTH@";
     # Olaliving.auth = "@Olaliving_AUTH@";
     "Home Sweet Home".auth = "@Home_Sweet_Home_AUTH@";
+    "BREWLAB".auth = "@BREWLAB_AUTH@";
+    "Avionics-Page 5".auth = "@Avionics_AUTH@";
   };
 
   # Set your time zone.
@@ -107,7 +109,7 @@
   users.users.max = {
     isNormalUser = true;
     description = "max";
-    extraGroups = [ "networkmanager" "wheel" "video" "docker"];
+    extraGroups = [ "networkmanager" "wheel" "video" "docker" "lxd" "vboxusers"];
     packages = with pkgs; [
       firefox-bin
       discord
@@ -138,7 +140,6 @@
   # services.openssh.enable = true;
   services.borgmatic = {
     enable = true;
-    # frequency = "daily";
     settings = {
       location = {
         source_directories = [
@@ -165,7 +166,7 @@
   };
   services.fprintd.enable = true;
   services.tlp = {
-    enable = true;
+    enable = false; # disabled for plasma ugh
     settings = {
       CPU_SCALING_GOVERNOR_ON_BAT="powersave";
       CPU_SCALING_GOVERNOR_ON_AC="performance";
@@ -205,7 +206,11 @@
   #   };
   # };
 
-  services.tailscale.enable = true;
+  services.tailscale = {
+    enable = false;
+    extraUpFlags = [ "--ssh" "--advertise-connector" "--advertise-tags=tag:illinois" "--advertise-exit-node" "--exit-node=100.94.214.33" ];
+    useRoutingFeatures = "both";
+  };
   services.blueman.enable = true;
   services.udev = {
     enable = true;
@@ -217,13 +222,15 @@
   # services.gnome3.at-spi2-core.enable = true;
 
   virtualisation.docker.enable = true;
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.lxd.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  networking.firewall.checkReversePath = "loose";
-  networking.firewall.enable = true;
+  # networking.firewall.checkReversePath = "loose";
+  networking.firewall.enable = false;
 
   nix.settings.experimental-features = "nix-command flakes";
   # nix.settings.substituers = [

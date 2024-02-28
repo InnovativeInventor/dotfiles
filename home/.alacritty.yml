@@ -1,2 +1,4 @@
 key_bindings:
  - { key: Comma, mods: Control, chars: "\x1b[27;5;44~" } # Ctrl + ,
+font:
+  size: 10.0

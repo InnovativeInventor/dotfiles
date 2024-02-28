@@ -5,5 +5,11 @@ shopt -s histappend
 alias e='sudo nvim /etc/nixos'
 alias r='sudo nixos-rebuild switch'
 alias a='sudo docker run --rm -v $(pwd):/root -it arch'
+alias dev='docker exec -it --user ubuntu --workdir /home/ubuntu dev bash'
+alias bdev='sudo docker export dev > /home/max/dev/backups/dev-backup-$(date -Ins).tar'
 
 eval $(opam env)
+
+# Editor stuff
+alias vim='nvim'
+export EDITOR="nvim"

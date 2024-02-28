@@ -29,7 +29,6 @@
      powertop
      tlp
 
-
      intel-media-driver # hardware
      intel-gpu-tools
 
@@ -39,5 +38,7 @@
      libuuid
      x11docker
      auto-cpufreq
+
+     pulseaudioFull
   ];
 }

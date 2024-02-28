@@ -9,22 +9,36 @@
     enable = true;
 
     desktopManager = {
-      xterm.enable = false;
       xfce = {
         enable = true;
         noDesktop = true;
         enableXfwm = false;
       };
+      plasma5.enable = false;
+      xterm.enable = false;
     };
    
     displayManager = {
-        defaultSession = "xfce+xmonad";
-        sessionCommands = "${pkgs.xmobar}/bin/xmobar";
+        defaultSession = "xfce+dwm";
+	# sddm.enable = true; 
+        # defaultSession = "xfce+xmonad";
+        # sessionCommands = "${pkgs.xmobar}/bin/xmobar";
     };
 
     windowManager = {
-      xmonad = {
+      dwm = {
         enable = true;
+        package = pkgs.dwm.overrideAttrs {
+	  src = pkgs.fetchFromGitHub {
+	    owner = "InnovativeInventor";
+	    repo = "dwm";
+	    rev = "master";
+	    hash = "sha256-Mu19AnnOIBy7lqoUcNA25TjpUtVxH1zlY491xb9PgG0=";
+	  };
+	};
+      };
+      xmonad = {
+        enable = false;
         enableContribAndExtras = true;
         extraPackages = haskellPackages: [ 
           # pkgs.polybar
@@ -44,18 +58,19 @@
   };
 
   # Enable the KDE Plasma Desktop Environment.
-  # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
+  # services.xserver.displayManager.sddm.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
     xkbVariant = "";
-    xkbOptions = "caps:swapescape";
+    xkbOptions = "caps:escape";
   };
   
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
+  services.xserver.libinput.mouse.naturalScrolling = true;
   services.xserver.libinput.touchpad.naturalScrolling = true;
   services.xserver.libinput.touchpad.disableWhileTyping = true;
   services.xserver.libinput.touchpad.clickMethod = "clickfinger";
