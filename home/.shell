@@ -5,8 +5,10 @@ shopt -s histappend
 alias e='sudo nvim /etc/nixos'
 alias r='sudo nixos-rebuild switch'
 alias a='sudo docker run --rm -v $(pwd):/root -it arch'
-alias dev='docker exec -it --user ubuntu --workdir /home/ubuntu dev bash'
+alias dev='docker exec -it --user ubuntu --workdir /home/ubuntu dev bash --rcfile /home/ubuntu/.bashrc'
+alias sdev='docker start dev'
 alias bdev='sudo docker export dev > /home/max/dev/backups/dev-backup-$(date -Ins).tar'
+alias rdev='sudo docker restart dev'
 
 eval $(opam env)
 eval "$(atuin init bash --disable-up-arrow)"

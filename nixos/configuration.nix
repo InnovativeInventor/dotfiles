@@ -42,10 +42,12 @@
     IllinoisNet.priority = 10;
     Eduroam.auth = "@Eduroam_AUTH@";
     "Big Goose".auth = "@Big_Goose_AUTH@";
+
     # Olaliving.auth = "@Olaliving_AUTH@";
     "Home Sweet Home".auth = "@Home_Sweet_Home_AUTH@";
     "BREWLAB".auth = "@BREWLAB_AUTH@";
     "Avionics-Page 5".auth = "@Avionics_AUTH@";
+    "coach 235".auth = "@Coach_235_AUTH@";
   };
 
   # Set your time zone.
