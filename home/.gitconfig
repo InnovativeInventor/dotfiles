@@ -1,12 +1,8 @@
 [user]
 	name = Max Fan
-	email = git@max.fan
-# [url "git@github.com:"]
-# 	insteadOf = https://github.com/
+	email = max.fan@pi2.network
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	editor = vim
 	# fsmonitor = true
-[interactive]
-	diffFilter = diff-so-fancy --patch
 [init]
 	defaultBranch = main
